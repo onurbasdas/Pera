@@ -8,31 +8,54 @@
 import Foundation
 
 class MainViewModel {
-    private var repositories: [MainModel] = []
-    
+    var repositories: [MainModel] = []
+    var favoriteRepositories: [MainModel] = []
+
     func fetchRepositories(for organizations: [String], completion: @escaping () -> Void) {
-        let dispatchGroup = DispatchGroup()
-        
+        var allRepos: [MainModel] = []
+
+        let group = DispatchGroup()
+
         for organization in organizations {
-            dispatchGroup.enter()
+            group.enter()
+
             GitHubAPI.shared.getRepositories(organization: organization) { [weak self] repos in
-                if let repos = repos {
-                    self?.repositories.append(contentsOf: repos)
+                defer {
+                    group.leave()
                 }
-                dispatchGroup.leave()
+
+                if let repos = repos {
+                    allRepos.append(contentsOf: repos)
+                }
             }
         }
-        
-        dispatchGroup.notify(queue: .main) {
+
+        group.notify(queue: .main) { [weak self] in
+            // Tüm organizasyonlardan alınan repolar repositories dizisine eklenir.
+            self?.repositories = allRepos
             completion()
         }
     }
-    
+
+
     func numberOfRepositories() -> Int {
         return repositories.count
     }
-    
+
     func repository(at index: Int) -> MainModel {
         return repositories[index]
     }
+
+    func toggleFavoriteStatus(for repository: MainModel) {
+        if favoriteRepositories.contains(where: { $0.name == repository.name }) {
+            favoriteRepositories.removeAll { $0.name == repository.name }
+        } else {
+            favoriteRepositories.append(repository)
+        }
+    }
+
+    func isRepositoryFavorite(_ repository: MainModel) -> Bool {
+        return favoriteRepositories.contains(where: { $0.name == repository.name })
+    }
 }
+

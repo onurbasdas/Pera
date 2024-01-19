@@ -8,7 +8,8 @@
 import Foundation
 
 struct MainModel: Codable {
-    let name: String?
-    let htmlUrl: String?
-    let description: String?
+    var id: Int
+    var name: String?
+    var htmlUrl: String?
+    var description: String?
 }
