@@ -10,6 +10,8 @@
 		779FE6A42B5B1D5900FB23CB /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FE6A32B5B1D5900FB23CB /* GithubAPI.swift */; };
 		77A2E5A42B5B245C00848A40 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 77A2E5A32B5B245C00848A40 /* SnapKit */; };
 		77A2E5A62B5B245C00848A40 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 77A2E5A52B5B245C00848A40 /* SnapKit-Dynamic */; };
+		77A2E5A82B5B287D00848A40 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2E5A72B5B287D00848A40 /* DetailViewController.swift */; };
+		77A2E5AA2B5B29A000848A40 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2E5A92B5B29A000848A40 /* DetailViewModel.swift */; };
 		77CDFD372B5ABCB200954295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD362B5ABCB200954295 /* AppDelegate.swift */; };
 		77CDFD392B5ABCB200954295 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD382B5ABCB200954295 /* SceneDelegate.swift */; };
 		77CDFD3B2B5ABCB200954295 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD3A2B5ABCB200954295 /* MainViewController.swift */; };
@@ -42,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		779FE6A32B5B1D5900FB23CB /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
+		77A2E5A72B5B287D00848A40 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		77A2E5A92B5B29A000848A40 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		77CDFD332B5ABCB200954295 /* Pera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CDFD362B5ABCB200954295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77CDFD382B5ABCB200954295 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,7 +97,6 @@
 				77CDFD4C2B5ABCB400954295 /* PeraTests */,
 				77CDFD562B5ABCB400954295 /* PeraUITests */,
 				77CDFD342B5ABCB200954295 /* Products */,
-				BBC455A77E65A695E8C532CF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				77CDFD6D2B5ABDD600954295 /* MainViewModel.swift */,
+				77A2E5A92B5B29A000848A40 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				77CDFD3A2B5ABCB200954295 /* MainViewController.swift */,
+				77A2E5A72B5B287D00848A40 /* DetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -170,13 +175,6 @@
 				779FE6A32B5B1D5900FB23CB /* GithubAPI.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		BBC455A77E65A695E8C532CF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,8 +271,8 @@
 			);
 			mainGroup = 77CDFD2A2B5ABCB200954295;
 			packageReferences = (
-				77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
-				77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit.git" */,
+				77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 77CDFD342B5ABCB200954295 /* Products */;
 			projectDirPath = "";
@@ -324,6 +322,8 @@
 				77CDFD392B5ABCB200954295 /* SceneDelegate.swift in Sources */,
 				77CDFD702B5ABDE800954295 /* MainModel.swift in Sources */,
 				77CDFD6E2B5ABDD600954295 /* MainViewModel.swift in Sources */,
+				77A2E5A82B5B287D00848A40 /* DetailViewController.swift in Sources */,
+				77A2E5AA2B5B29A000848A40 /* DetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,7 +662,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+		77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -671,7 +671,7 @@
 				minimumVersion = 5.7.0;
 			};
 		};
-		77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
+		77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -684,17 +684,17 @@
 /* Begin XCSwiftPackageProductDependency section */
 		77A2E5A32B5B245C00848A40 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		77A2E5A52B5B245C00848A40 /* SnapKit-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
 		};
 		77CDFD672B5ABD1D00954295 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
+			package = 77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
