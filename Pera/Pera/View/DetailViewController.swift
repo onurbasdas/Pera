@@ -36,6 +36,14 @@ class DetailViewController: UIViewController {
         return button
     }()
     
+    private let closeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     init(viewModel: DetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -56,7 +64,7 @@ class DetailViewController: UIViewController {
     private func setupUI() {
         view.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(60)
             make.leading.trailing.equalToSuperview().inset(20)
         }
         
@@ -74,11 +82,24 @@ class DetailViewController: UIViewController {
             make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
         }
+        
+        view.addSubview(closeButton)
+        closeButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
+            make.width.height.equalTo(30)
+        }
     }
     
     private func updateUI() {
         nameLabel.text = viewModel.getRepository().name
         descriptionLabel.text = viewModel.getRepository().description
+    }
+    
+    @objc private func toggleFavorite() {
+        viewModel.toggleFavoriteStatus()
+        updateFavoriteButton()
+        delegate?.didToggleFavoriteStatus(for: viewModel.getRepository())
     }
     
     private func updateFavoriteButton() {
@@ -89,21 +110,13 @@ class DetailViewController: UIViewController {
         }
     }
     
-    @objc private func toggleFavorite() {
-        viewModel.toggleFavoriteStatus()
-        updateFavoriteButton()
-        updateUserDefaults()
-        delegate?.didToggleFavoriteStatus(for: viewModel.getRepository())
-    }
-    
-    private func updateUserDefaults() {
-        let isFavorite = viewModel.isRepositoryFavorite()
-        UserDefaults.standard.set(isFavorite, forKey: String(viewModel.getRepository().id))
-    }
-    
     private func loadFavoriteStatus() {
-        let isFavorite = UserDefaults.standard.bool(forKey: String(viewModel.getRepository().id))
+        let isFavorite = UserDefaults.standard.bool(forKey: viewModel.favoriteKey)
         viewModel.setFavoriteStatus(isFavorite)
         updateFavoriteButton()
+    }
+    
+    @objc private func closeButtonTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
 }

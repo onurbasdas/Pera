@@ -12,4 +12,7 @@ struct MainModel: Codable {
     var name: String?
     var htmlUrl: String?
     var description: String?
+    var isFavoriteKey: String {
+        return "FavoriteStatus_\(id)"
+    }
 }

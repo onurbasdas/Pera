@@ -32,6 +32,11 @@ class MainViewController: UIViewController {
     }
     
     private func setupUI() {
+        // Navigasyon çubuğunu gizle
+        navigationController?.isNavigationBarHidden = true
+        
+        view.backgroundColor = .white
+        
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -62,6 +67,7 @@ class MainViewController: UIViewController {
         let detailViewModel = DetailViewModel(repository: repository, isFavorite: viewModel.isRepositoryFavorite(repository))
         let detailViewController = DetailViewController(viewModel: detailViewModel)
         detailViewController.delegate = self
+        detailViewController.modalPresentationStyle = .fullScreen
         self.present(detailViewController, animated: true)
     }
 }
@@ -110,7 +116,6 @@ extension MainViewController: RepositoryDetailDelegate {
         if viewModel.isRepositoryFavorite(repository) {
             tableView.reloadData()
         } else {
-            // Eğer favori değilse ve "Add to Favorites" butonuna basıldıysa, tableView'i güncelle
             if let index = filteredRepositories.firstIndex(where: { $0.name == repository.name }) {
                 tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
             }
