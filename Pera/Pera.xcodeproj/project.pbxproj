@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		779FE6A42B5B1D5900FB23CB /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FE6A32B5B1D5900FB23CB /* GithubAPI.swift */; };
+		77A2E5A42B5B245C00848A40 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 77A2E5A32B5B245C00848A40 /* SnapKit */; };
+		77A2E5A62B5B245C00848A40 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 77A2E5A52B5B245C00848A40 /* SnapKit-Dynamic */; };
 		77CDFD372B5ABCB200954295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD362B5ABCB200954295 /* AppDelegate.swift */; };
 		77CDFD392B5ABCB200954295 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD382B5ABCB200954295 /* SceneDelegate.swift */; };
-		77CDFD3B2B5ABCB200954295 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD3A2B5ABCB200954295 /* ViewController.swift */; };
-		77CDFD3E2B5ABCB200954295 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CDFD3C2B5ABCB200954295 /* Main.storyboard */; };
+		77CDFD3B2B5ABCB200954295 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD3A2B5ABCB200954295 /* MainViewController.swift */; };
 		77CDFD402B5ABCB400954295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77CDFD3F2B5ABCB400954295 /* Assets.xcassets */; };
 		77CDFD432B5ABCB400954295 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CDFD412B5ABCB400954295 /* LaunchScreen.storyboard */; };
 		77CDFD4E2B5ABCB400954295 /* PeraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD4D2B5ABCB400954295 /* PeraTests.swift */; };
 		77CDFD582B5ABCB400954295 /* PeraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD572B5ABCB400954295 /* PeraUITests.swift */; };
 		77CDFD5A2B5ABCB400954295 /* PeraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD592B5ABCB400954295 /* PeraUITestsLaunchTests.swift */; };
 		77CDFD682B5ABD1D00954295 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 77CDFD672B5ABD1D00954295 /* Kingfisher */; };
+		77CDFD6E2B5ABDD600954295 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD6D2B5ABDD600954295 /* MainViewModel.swift */; };
+		77CDFD702B5ABDE800954295 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD6F2B5ABDE800954295 /* MainModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		779FE6A32B5B1D5900FB23CB /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		77CDFD332B5ABCB200954295 /* Pera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CDFD362B5ABCB200954295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77CDFD382B5ABCB200954295 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		77CDFD3A2B5ABCB200954295 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		77CDFD3D2B5ABCB200954295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		77CDFD3A2B5ABCB200954295 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		77CDFD3F2B5ABCB400954295 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77CDFD422B5ABCB400954295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77CDFD442B5ABCB400954295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,6 +54,8 @@
 		77CDFD532B5ABCB400954295 /* PeraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CDFD572B5ABCB400954295 /* PeraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeraUITests.swift; sourceTree = "<group>"; };
 		77CDFD592B5ABCB400954295 /* PeraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeraUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		77CDFD6D2B5ABDD600954295 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		77CDFD6F2B5ABDE800954295 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +63,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A2E5A42B5B245C00848A40 /* SnapKit in Frameworks */,
 				77CDFD682B5ABD1D00954295 /* Kingfisher in Frameworks */,
+				77A2E5A62B5B245C00848A40 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +93,7 @@
 				77CDFD4C2B5ABCB400954295 /* PeraTests */,
 				77CDFD562B5ABCB400954295 /* PeraUITests */,
 				77CDFD342B5ABCB200954295 /* Products */,
+				BBC455A77E65A695E8C532CF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +110,10 @@
 		77CDFD352B5ABCB200954295 /* Pera */ = {
 			isa = PBXGroup;
 			children = (
-				77CDFD362B5ABCB200954295 /* AppDelegate.swift */,
-				77CDFD382B5ABCB200954295 /* SceneDelegate.swift */,
-				77CDFD3A2B5ABCB200954295 /* ViewController.swift */,
-				77CDFD3C2B5ABCB200954295 /* Main.storyboard */,
+				77CDFD712B5ABDFC00954295 /* Utils */,
+				77CDFD6C2B5ABDBC00954295 /* View */,
+				77CDFD6B2B5ABDB300954295 /* ViewModel */,
+				77CDFD6A2B5ABDAE00954295 /* Model */,
 				77CDFD3F2B5ABCB400954295 /* Assets.xcassets */,
 				77CDFD412B5ABCB400954295 /* LaunchScreen.storyboard */,
 				77CDFD442B5ABCB400954295 /* Info.plist */,
@@ -129,6 +138,47 @@
 			path = PeraUITests;
 			sourceTree = "<group>";
 		};
+		77CDFD6A2B5ABDAE00954295 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77CDFD6F2B5ABDE800954295 /* MainModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		77CDFD6B2B5ABDB300954295 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				77CDFD6D2B5ABDD600954295 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		77CDFD6C2B5ABDBC00954295 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				77CDFD3A2B5ABCB200954295 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		77CDFD712B5ABDFC00954295 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				77CDFD362B5ABCB200954295 /* AppDelegate.swift */,
+				77CDFD382B5ABCB200954295 /* SceneDelegate.swift */,
+				779FE6A32B5B1D5900FB23CB /* GithubAPI.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BBC455A77E65A695E8C532CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,6 +197,8 @@
 			name = Pera;
 			packageProductDependencies = (
 				77CDFD672B5ABD1D00954295 /* Kingfisher */,
+				77A2E5A32B5B245C00848A40 /* SnapKit */,
+				77A2E5A52B5B245C00848A40 /* SnapKit-Dynamic */,
 			);
 			productName = Pera;
 			productReference = 77CDFD332B5ABCB200954295 /* Pera.app */;
@@ -221,8 +273,8 @@
 			);
 			mainGroup = 77CDFD2A2B5ABCB200954295;
 			packageReferences = (
-				77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				77CDFD692B5ABD2500954295 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
+				77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit.git" */,
 			);
 			productRefGroup = 77CDFD342B5ABCB200954295 /* Products */;
 			projectDirPath = "";
@@ -242,7 +294,6 @@
 			files = (
 				77CDFD432B5ABCB400954295 /* LaunchScreen.storyboard in Resources */,
 				77CDFD402B5ABCB400954295 /* Assets.xcassets in Resources */,
-				77CDFD3E2B5ABCB200954295 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,9 +318,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77CDFD3B2B5ABCB200954295 /* ViewController.swift in Sources */,
+				77CDFD3B2B5ABCB200954295 /* MainViewController.swift in Sources */,
+				779FE6A42B5B1D5900FB23CB /* GithubAPI.swift in Sources */,
 				77CDFD372B5ABCB200954295 /* AppDelegate.swift in Sources */,
 				77CDFD392B5ABCB200954295 /* SceneDelegate.swift in Sources */,
+				77CDFD702B5ABDE800954295 /* MainModel.swift in Sources */,
+				77CDFD6E2B5ABDD600954295 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,14 +360,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		77CDFD3C2B5ABCB200954295 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				77CDFD3D2B5ABCB200954295 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		77CDFD412B5ABCB400954295 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -456,7 +502,6 @@
 				INFOPLIST_FILE = Pera/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -484,7 +529,6 @@
 				INFOPLIST_FILE = Pera/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -618,7 +662,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 6.0.0;
+				minimumVersion = 5.7.0;
+			};
+		};
+		77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -626,20 +679,22 @@
 				minimumVersion = 7.10.2;
 			};
 		};
-		77CDFD692B5ABD2500954295 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		77A2E5A32B5B245C00848A40 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			productName = SnapKit;
+		};
+		77A2E5A52B5B245C00848A40 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			productName = "SnapKit-Dynamic";
+		};
 		77CDFD672B5ABD1D00954295 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 77CDFD662B5ABD1D00954295 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
