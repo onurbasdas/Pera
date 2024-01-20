@@ -22,6 +22,7 @@ class MainViewController: UIViewController {
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Search Repositories"
+        searchBar.searchBarStyle = .default
         return searchBar
     }()
     
@@ -32,11 +33,7 @@ class MainViewController: UIViewController {
     }
     
     private func setupUI() {
-        // Navigasyon çubuğunu gizle
-        navigationController?.isNavigationBarHidden = true
-        
         view.backgroundColor = .white
-        
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -62,14 +59,6 @@ class MainViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }
-    
-    func showRepositoryDetailScreen(for repository: MainModel) {
-        let detailViewModel = DetailViewModel(repository: repository, isFavorite: viewModel.isRepositoryFavorite(repository))
-        let detailViewController = DetailViewController(viewModel: detailViewModel)
-        detailViewController.delegate = self
-        detailViewController.modalPresentationStyle = .fullScreen
-        self.present(detailViewController, animated: true)
-    }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -90,6 +79,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let repository = filteredRepositories[indexPath.row]
         showRepositoryDetailScreen(for: repository)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func showRepositoryDetailScreen(for repository: MainModel) {
+        let detailViewModel = DetailViewModel(repository: repository, isFavorite: viewModel.isRepositoryFavorite(repository))
+        let detailViewController = DetailViewController(viewModel: detailViewModel)
+        detailViewController.delegate = self
+        detailViewController.modalPresentationStyle = .fullScreen
+        self.present(detailViewController, animated: true)
     }
 }
 
@@ -112,7 +109,6 @@ extension MainViewController: UISearchBarDelegate {
 extension MainViewController: RepositoryDetailDelegate {
     func didToggleFavoriteStatus(for repository: MainModel) {
         viewModel.toggleFavoriteStatus(for: repository)
-        
         if viewModel.isRepositoryFavorite(repository) {
             tableView.reloadData()
         } else {
