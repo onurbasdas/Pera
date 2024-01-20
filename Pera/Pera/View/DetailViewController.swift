@@ -13,6 +13,7 @@ protocol RepositoryDetailDelegate: AnyObject {
 }
 
 class DetailViewController: UIViewController {
+    
     weak var delegate: RepositoryDetailDelegate?
     private let viewModel: DetailViewModel
     
@@ -20,6 +21,7 @@ class DetailViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
@@ -27,6 +29,32 @@ class DetailViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 0
+        return label
+    }()
+    
+    private let forkLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .black)
+        return label
+    }()
+    
+    private let watchLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .black)
+        return label
+    }() 
+    
+    private let languageLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .black)
+        label.textColor = .blue
+        return label
+    }()
+
+    private let visibilityLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .black)
+        label.textColor = .red
         return label
     }()
     
@@ -62,15 +90,48 @@ class DetailViewController: UIViewController {
     }
     
     private func setupUI() {
+        
+        view.addSubview(closeButton)
+        closeButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
+            make.width.height.equalTo(30)
+        }
+        
         view.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(60)
+            make.top.equalTo(closeButton.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        let forkWatchStackView: UIStackView = {
+            let stackView = UIStackView(arrangedSubviews: [forkLabel, watchLabel])
+            stackView.axis = .horizontal
+            stackView.spacing = 8
+            return stackView
+        }()
+        
+        view.addSubview(forkWatchStackView)
+        forkWatchStackView.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(40)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        view.addSubview(visibilityLabel)
+        visibilityLabel.snp.makeConstraints { make in
+            make.top.equalTo(forkWatchStackView.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        view.addSubview(languageLabel)
+        languageLabel.snp.makeConstraints { make in
+            make.top.equalTo(visibilityLabel.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(20)
         }
         
         view.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(10)
+            make.top.equalTo(languageLabel.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(20)
         }
         
@@ -82,18 +143,15 @@ class DetailViewController: UIViewController {
             make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
         }
-        
-        view.addSubview(closeButton)
-        closeButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
-            make.width.height.equalTo(30)
-        }
     }
     
     private func updateUI() {
         nameLabel.text = viewModel.getRepository().name
-        descriptionLabel.text = viewModel.getRepository().description
+        descriptionLabel.text = "Description: \(viewModel.getRepository().description ?? "")"
+        forkLabel.text = "Fork Count: \(viewModel.getRepository().forks ?? 0)"
+        watchLabel.text = "Watcher Count: \(viewModel.getRepository().watchers ?? 0)"
+        visibilityLabel.text = "Visibility: \(viewModel.getRepository().visibility ?? "")"
+        languageLabel.text = "Language: \(viewModel.getRepository().language ?? "")"
     }
     
     @objc private func toggleFavorite() {
