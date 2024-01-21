@@ -128,20 +128,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if filteredRepositories.isEmpty {
-            let cell = UITableViewCell()
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.textAlignment = .center
-            cell.textLabel?.alpha = 0.5
-            cell.textLabel?.text = "The searched repository could not be found.\nPlease search for another repository."
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            let repository = filteredRepositories[indexPath.row]
-            cell.textLabel?.text = repository.name
-            cell.accessoryType = viewModel.isRepositoryFavorite(repository) ? .checkmark : .none
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let repository = filteredRepositories[indexPath.row]
+        cell.textLabel?.text = repository.name
+        cell.accessoryType = viewModel.isRepositoryFavorite(repository) ? .checkmark : .none
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
