@@ -10,9 +10,16 @@ import Foundation
 class MainViewModel {
     var repositories: [MainModel] = []
     var favoriteRepositories: [MainModel] = []
+    var alorant: [MainModel] = []
+    var perawallet: [MainModel] = []
+    var algorandfoundation: [MainModel] = []
     
     func fetchRepositories(for organizations: [String], completion: @escaping () -> Void) {
         var allRepos: [MainModel] = []
+        var alorantFetched: [MainModel] = []
+        var perawalletFetched: [MainModel] = []
+        var algorandfoundationFetched: [MainModel] = []
+        
         
         let group = DispatchGroup()
         
@@ -26,12 +33,18 @@ class MainViewModel {
                 
                 if let repos = repos {
                     allRepos.append(contentsOf: repos)
+                    alorantFetched.append(contentsOf: repos.filter { $0.url?.contains(URLEnpointTypes.algorand.rawValue) == true })
+                    perawalletFetched.append(contentsOf: repos.filter { $0.url?.contains(URLEnpointTypes.perawallet.rawValue) == true })
+                    algorandfoundationFetched.append(contentsOf: repos.filter { $0.url?.contains(URLEnpointTypes.algorandfoundation.rawValue) == true})
                 }
             }
         }
         
         group.notify(queue: .main) { [weak self] in
             self?.repositories = allRepos
+            self?.alorant = alorantFetched
+            self?.perawallet = perawalletFetched
+            self?.algorandfoundation = algorandfoundationFetched
             completion()
         }
     }
@@ -57,4 +70,3 @@ class MainViewModel {
         return UserDefaults.standard.bool(forKey: repository.isFavoriteKey)
     }
 }
-

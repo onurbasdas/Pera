@@ -8,10 +8,19 @@
 import UIKit
 import SnapKit
 
+enum URLEnpointTypes : String {
+    case all
+    case algorand = "algorand"
+    case perawallet = "perawallet"
+    case algorandfoundation = "algorandfoundation"
+}
+
 class MainViewController: UIViewController {
     
     private let viewModel = MainViewModel()
     private var filteredRepositories: [MainModel] = []
+    
+    private var selectedURLType : URLEnpointTypes?
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -26,36 +35,87 @@ class MainViewController: UIViewController {
         return searchBar
     }()
     
+    private let segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["All", "algorand", "perawallet", "algorandfoundation"])
+        segmentedControl.selectedSegmentIndex = 0
+        return segmentedControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         fetchData()
     }
-    
+
     private func setupUI() {
         view.backgroundColor = .white
+
+        // Add segmented control
+        view.addSubview(segmentedControl)
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+
+        // Add searchBar
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(segmentedControl.snp.bottom)
             make.leading.trailing.equalToSuperview()
         }
         searchBar.delegate = self
-        
+
+        // Add tableView
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
         
+        // Update segmented control constraints
+        segmentedControl.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(40)  // Adjust the height as needed
+        }
+
+        // Set up dataSource and delegate
         tableView.dataSource = self
         tableView.delegate = self
     }
+
+
+    @objc private func segmentedControlValueChanged() {
+        // Handle segmented control value changes here
+        searchBar.text = nil
+        view.endEditing(true)
+        let selectedTabIndex = segmentedControl.selectedSegmentIndex
+        switch selectedTabIndex {
+        case 0:
+            selectedURLType = .all
+            filteredRepositories = self.viewModel.repositories
+        case 1:
+            selectedURLType = .algorand
+            filteredRepositories = self.viewModel.alorant
+        case 2:
+            selectedURLType = .perawallet
+            filteredRepositories = self.viewModel.perawallet
+        case 3:
+            selectedURLType = .algorandfoundation
+            filteredRepositories = self.viewModel.algorandfoundation
+        default:
+            return
+        }
+        self.tableView.reloadData()
+        
+    }
     
     private func fetchData() {
-        let organizations = ["algorand", "perawallet", "algorandfoundation"]
+        let organizations = [URLEnpointTypes.algorand.rawValue,
+                             URLEnpointTypes.perawallet.rawValue,
+                             URLEnpointTypes.algorandfoundation.rawValue]
+        
         
         viewModel.fetchRepositories(for: organizations) { [weak self] in
             self?.filteredRepositories = self?.viewModel.repositories ?? []
+            
             self?.tableView.reloadData()
         }
     }
@@ -68,11 +128,20 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let repository = filteredRepositories[indexPath.row]
-        cell.textLabel?.text = repository.name
-        cell.accessoryType = viewModel.isRepositoryFavorite(repository) ? .checkmark : .none
-        return cell
+        if filteredRepositories.isEmpty {
+            let cell = UITableViewCell()
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.alpha = 0.5
+            cell.textLabel?.text = "The searched repository could not be found.\nPlease search for another repository."
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            let repository = filteredRepositories[indexPath.row]
+            cell.textLabel?.text = repository.name
+            cell.accessoryType = viewModel.isRepositoryFavorite(repository) ? .checkmark : .none
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,10 +161,24 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        var modelToSearchIn : [MainModel] = []
+        switch selectedURLType {
+        case .all:
+            modelToSearchIn = viewModel.repositories
+        case .algorand:
+            modelToSearchIn = viewModel.alorant
+        case .perawallet:
+            modelToSearchIn = viewModel.perawallet
+        case .algorandfoundation:
+            modelToSearchIn = viewModel.algorandfoundation
+        default:
+            return
+        }
+        
         if searchText.isEmpty {
-            filteredRepositories = viewModel.repositories
+            filteredRepositories = modelToSearchIn
         } else {
-            filteredRepositories = viewModel.repositories.filter {
+            filteredRepositories = modelToSearchIn.filter {
                 if let name = $0.name {
                     return name.lowercased().contains(searchText.lowercased())
                 }

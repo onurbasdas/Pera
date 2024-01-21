@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		779FE6A42B5B1D5900FB23CB /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FE6A32B5B1D5900FB23CB /* GithubAPI.swift */; };
 		77A2E5A42B5B245C00848A40 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 77A2E5A32B5B245C00848A40 /* SnapKit */; };
-		77A2E5A62B5B245C00848A40 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 77A2E5A52B5B245C00848A40 /* SnapKit-Dynamic */; };
 		77A2E5A82B5B287D00848A40 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2E5A72B5B287D00848A40 /* DetailViewController.swift */; };
 		77A2E5AA2B5B29A000848A40 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2E5A92B5B29A000848A40 /* DetailViewModel.swift */; };
 		77CDFD372B5ABCB200954295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDFD362B5ABCB200954295 /* AppDelegate.swift */; };
@@ -69,7 +68,6 @@
 			files = (
 				77A2E5A42B5B245C00848A40 /* SnapKit in Frameworks */,
 				77CDFD682B5ABD1D00954295 /* Kingfisher in Frameworks */,
-				77A2E5A62B5B245C00848A40 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +194,6 @@
 			packageProductDependencies = (
 				77CDFD672B5ABD1D00954295 /* Kingfisher */,
 				77A2E5A32B5B245C00848A40 /* SnapKit */,
-				77A2E5A52B5B245C00848A40 /* SnapKit-Dynamic */,
 			);
 			productName = Pera;
 			productReference = 77CDFD332B5ABCB200954295 /* Pera.app */;
@@ -685,11 +682,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		77A2E5A52B5B245C00848A40 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 77A2E5A22B5B245C00848A40 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 		77CDFD672B5ABD1D00954295 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
