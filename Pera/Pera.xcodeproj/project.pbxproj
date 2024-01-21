@@ -666,8 +666,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
-				kind = versionRange;
-				maximumVersion = 6.0.0;
+				kind = upToNextMajorVersion;
 				minimumVersion = 5.7.0;
 			};
 		};
