@@ -49,15 +49,6 @@ class MainViewModel {
         }
     }
     
-    
-    func numberOfRepositories() -> Int {
-        return repositories.count
-    }
-    
-    func repository(at index: Int) -> MainModel {
-        return repositories[index]
-    }
-    
     func toggleFavoriteStatus(for repository: MainModel) {
         if favoriteRepositories.contains(where: { $0.name == repository.name }) {
             favoriteRepositories.removeAll { $0.name == repository.name }
